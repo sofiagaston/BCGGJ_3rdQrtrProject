@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Specifies the character encoding for the HTML document -->
     <meta charset="UTF-8">
+    <!-- Sets the viewport to the width of the device and initial scale to 1.0 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Sets the title of the document -->
     <title>Document</title>
+    <!-- Links to the external CSS stylesheet -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Preconnects to Google Fonts to improve performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Preconnects to Google Fonts with crossorigin attribute for CORS requests -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Imports the VT323 font from Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <!-- Links to the external JavaScript file -->
     <script src="script.js"></script>
 </head>
 <body class="indexPage">
+    <!-- Container for the start text -->
     <div class="startText">
+        <!-- Heading for the start text -->
         <h1>Click the button to start the game!</h1>
     </div>
 
+    <!-- Container for the start button -->
     <div class="startButton">
+        <!-- Image used as the start button, with an onclick event to redirect to the battle arena page -->
         <img src="images/startButton.png" id="startButton" height="90px" alt="Start Button" onclick="redirectPage()">
     </div>
 
+    <!-- JavaScript function to redirect the user to the battle arena page -->
     <script>
         function redirectPage(){
+            // Redirects the user to the battle arena page
             window.location.href = 'battleArena.html'; 
-    }   
+        }   
     </script>
 </body>
 </html>
