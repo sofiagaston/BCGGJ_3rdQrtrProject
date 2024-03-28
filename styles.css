@@ -1,9 +1,11 @@
+CSS:                                                                   /* Define the font style for VT323 */
 .vt323-regular {
     font-family: "VT323", monospace;
     font-weight: 400;
     font-style: normal;
-}  
+}
 
+/* Style for the index page background */
 .indexPage {
     background-image: url('images/startingbg.gif');
     background-repeat: no-repeat;
@@ -11,6 +13,7 @@
     height: 100vh;
 }
 
+/* Style for the start text */
 .startText {
     font-family: "VT323", monospace;
     font-weight: 400;
@@ -22,6 +25,7 @@
     color: white;
 }
 
+/* Style for the start button */
 .startButton {
     display: flex;
     justify-content: center;
@@ -31,12 +35,13 @@
     width: 100%; 
 }
 
-
+/* Hover effect for the start button image */
 .startButton img:hover {
     opacity: 0.85;
     transform: scale(1.1);
 }
 
+/* Style for the whole page background */
 #wholePage {
     background-image: url('images/page2bg.gif');
     background-repeat: no-repeat;
@@ -45,28 +50,33 @@
     height: 100vh;
 }
 
+/* Style for the game container */
 .game-container {
     display: flex;
     justify-content: space-around;
     transition: all 0.3s ease-in-out; 
 }
 
+/* Style for the buttons container */
 .buttons-container {
     margin-top: 20px;
     justify-content: center;
 }
 
+/* Style for the button */
 .btn {
     border-radius: 5px; 
-    border: pink 2px dashed;
+    border: pink 3px dashed;
 }
 
+/* Style for the disabled button */
 .disabled {
     background-color: black;
     cursor: not-allowed;
     opacity: 0.25;
 }
 
+/* Style for the container */
 .container {
     background-color: rgba(0, 0, 0, 0.5);
     margin: 15px;
