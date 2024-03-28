@@ -1,4 +1,66 @@
-<script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Set character encoding and viewport settings -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Page title -->
+    <title>Punching Game >:C</title>
+    <!-- Link to external CSS stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Preconnect to Google Fonts for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Import VT323 font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body id="wholePage">
+    <!-- Main game container -->
+    <div class="container">
+        <h1>Punching Game >:C</h1>
+        <!-- Game elements container -->
+        <div class="game-container">
+            <!-- Player section -->
+            <div class="player">
+                <h2>Player</h2>
+                <div class="health">Health: <span id="playerH">100</span></div>
+            </div>
+            <!-- Opponent section -->
+            <div class="opponent">
+                <h2>Opponent</h2>
+                <div class="health">Health: <span id="opponentH">100</span></div>
+            </div>
+        </div>
+        <!-- Buttons container -->
+        <div class="buttons-container">
+            <label for="heads-tales">Select: </label>
+            <select id="heads-tales">
+                <option value="Head">Head</option>
+                <option value="Tail">Tail</option>
+            </select>
+            <!-- Action buttons container -->
+            <div class="container">
+                <!-- Coin toss button -->
+                <button id="coinTossButton" class="btn">
+                    <img src="images/flipCoin.png" height="35px" alt="Coin Toss">
+                </button>
+                <!-- Attack button -->
+                <button id="attackButton" class="btn disabled">
+                    <img src="images/attackButton.png" height="35px" alt="Attack">
+                </button>
+                <!-- Defend button -->
+                <button id="defendButton" class="btn disabled">
+                    <img src="images/defendButton.png" height="35px" alt="Defend">
+                </button>
+                <!-- Restart button -->
+                <button id="restartButton" class="btn disabled">
+                    <img src="images/restartButton.png" height="35px" alt="Restart">
+                </button>
+            </div>
+        <p class="result" id="gameResult"></p>
+    </div>
+    
+    <script>
     // Add event listeners for button clicks
     document.getElementById('coinTossButton').addEventListener('click', flipCoin);
     document.getElementById('attackButton').addEventListener('click', playerAttack);
