@@ -1,0 +1,83 @@
+.vt323-regular {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+}  
+
+.indexPage {
+    background-image: url('images/startingbg.gif');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
+
+.startText {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    padding: 10% 0;
+    font-size: x-large;
+    text-shadow: black 2px 2px;
+    color: white;
+}
+
+.startButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40%; 
+    width: 100%; 
+}
+
+
+.startButton img:hover {
+    opacity: 0.85;
+    transform: scale(1.1);
+}
+
+#wholePage {
+    background-image: url('images/page2bg.gif');
+    background-repeat: no-repeat;
+    background-size: cover; 
+    overflow: hidden;
+    height: 100vh;
+}
+
+.game-container {
+    display: flex;
+    justify-content: space-around;
+    transition: all 0.3s ease-in-out; 
+}
+
+.buttons-container {
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.btn {
+    border-radius: 5px; 
+    border: pink 2px dashed;
+}
+
+.disabled {
+    background-color: black;
+    cursor: not-allowed;
+    opacity: 0.25;
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 15px;
+    border-radius: 10px; 
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    padding:7vh;
+    font-size: xx-large;
+    text-shadow: black 2px 2px;
+    color: white;
+    border: pink dashed 2px;
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punching Game >:C</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+</head>
+<body id="wholePage">
+    <div class="container">
+        <h1>Punching Game >:C</h1>
+        <div class="game-container">
+            <div class="player">
+                <h2>Player</h2>
+                <div class="health">Health: <span id="playerH">100</span></div>
+            </div>
+            <div class="opponent">
+                <h2>Opponent</h2>
+                <div class="health">Health: <span id="opponentH">100</span></div>
+            </div>
+        </div>
+        <div class="buttons-container">
+            <label for="heads-tales">Select: </label>
+            <select id="heads-tales">
+                <option value="Head">Head</option>
+                <option value="Tail">Tail</option>
+            </select>
+            <div class="container">
+                <button id="coinTossButton" class="btn">
+                    <img src="images/flipCoin.png" height="35px" alt="Coin Toss">
+                </button>
+                <button id="attackButton" class="btn disabled">
+                    <img src="images/attackButton.png" height="35px" alt="Attack">
+                </button>
+                <button id="defendButton" class="btn disabled">
+                    <img src="images/defendButton.png" height="35px" alt="Defend">
+                </button>
+                <button id="restartButton" class="btn disabled">
+                    <img src="images/restartButton.png" height="35px" alt="Restart">
+                </button>
+            </div>
+        <p class="result" id="gameResult"></p>
+    </div>
+
+    <script>
+        document.getElementById('coinTossButton').addEventListener('click', flipCoin);
+        document.getElementById('attackButton').addEventListener('click', playerAttack);
+        document.getElementById('defendButton').addEventListener('click', playerDefend);
+        document.getElementById('restartButton').addEventListener('click', resetGame);
+    
+        let playerHP = 100;
+        let opponentHP = 100;
+        let turn = false;
+    
+        function flipCoin() {
+            const outcome = Math.random() < 0.5 ? 'Head' : 'Tail';
+            const playerDecision = document.getElementById('heads-tales').value;
+            const outcomeText = "Coin is " + outcome + ". You chose " + playerDecision + "!";
+
+            if (outcome === playerDecision) {
+                turn = true;
+                document.getElementById('attackButton').classList.remove('disabled');
+                document.getElementById('defendButton').classList.add('disabled');
+            } else {
+                turn = false;
+                document.getElementById('attackButton').classList.add('disabled');
+                document.getElementById('defendButton').classList.remove('disabled');
+            }
+
+            document.getElementById('gameResult').innerText = outcomeText;
+            document.getElementById('coinTossButton').classList.add('disabled');
+            document.getElementById('restartButton').classList.remove('disabled');
+        }
+
+    
+        function calculateDamage() {
+            return Math.floor(Math.random() * 5) + 1;
+        }
+    
+        function playerAttack() {
+            const damage = calculateDamage();
+            opponentHP -= damage;
+            document.getElementById('opponentH').innerText = Math.max(opponentHP, 0);
+            document.getElementById('gameResult').innerText = "You inflict " +damage+ " damage.";
+            checkHealth();
+            if (opponentHP > 0) {
+                turn = false;
+                opponentTurn();
+            }
+            document.getElementById('defendButton').classList.remove('disabled');
+        }
+    
+        function playerDefend() {
+            document.getElementById('gameResult').innerText = 'You will defend.';
+            checkHealth();
+            if (opponentHP > 0) {
+                turn = false;
+                opponentTurn();
+            }
+            document.getElementById('attackButton').classList.remove('disabled'); 
+        }
+    
+        function opponentAction() {
+            const action = Math.random() < 0.5 ? 'attack' : 'defend';
+            if (action === 'attack') {
+                const damage = calculateDamage();
+                playerHP -= damage;
+                document.getElementById('playerH').innerText = Math.max(playerHP, 0);
+                document.getElementById('gameResult').innerText = "Opponent inflicts "+damage+ " damage.";
+            } else {
+                document.getElementById('gameResult').innerText = 'Opponent defends.';
+            }
+            checkHealth();
+        }
+    
+        function opponentTurn() {
+            opponentAction();
+        }
+    
+        function checkHealth() {
+            if (playerHP <= 0) {
+                document.getElementById('gameResult').innerText = 'Opponent wins.';
+                disableButtons();
+            } else if (opponentHP <= 0) {
+                document.getElementById('gameResult').innerText = 'Player wins.';
+                disableButtons();
+            }
+        }
+    
+        function resetGame() {
+            playerHP = 100;
+            opponentHP = 100;
+            document.getElementById('playerH').innerText = playerHP;
+            document.getElementById('opponentH').innerText = opponentHP;
+            document.getElementById('gameResult').innerText = '';
+            document.getElementById('attackButton').classList.add('disabled'); 
+            document.getElementById('defendButton').classList.add('disabled'); 
+            document.getElementById('restartButton').classList.remove('disabled'); 
+            document.getElementById('coinTossButton').classList.remove('disabled');
+        }
+    
+        function disableButtons() {
+            document.getElementById('attackButton').classList.add('disabled');
+            document.getElementById('defendButton').classList.add('disabled');
+            document.getElementById('restartButton').classList.remove('disabled');
+        }
+    </script>
+    
+</body>
+</html>
